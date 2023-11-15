@@ -32,7 +32,8 @@ class Player(pygame.sprite.Sprite):
         self.facing = 'down'
         self.animation_loop = 1
 
-        self.image = self.game.character_spritesheet.get_sprite(1, 2, 71, 93)
+        self.image = self.game.Isa.get_sprite(1, 2, 71, 93)
+        self.image = self.game.Pepper.get_sprite(0, 0, 52, 84)
 
         self.rect = self.image.get_rect()
         self.rect.x = self.x
@@ -74,20 +75,19 @@ class Player(pygame.sprite.Sprite):
     def animate(self):
         if self.facing == "down":
             if self.x_change == 0:
-                self.image = self.game.character_spritesheet.get_sprite(1, 2, 71, 93)
+                self.image = self.game.Isa.get_sprite(1, 2, 71, 93)
 
         if self.facing == "up":
             if self.x_change == 0:
-                self.image = self.game.character_spritesheet.get_sprite(71, 2, 100, 93)
+                self.image = self.game.Isa.get_sprite(71, 2, 100, 93)
 
         if self.facing == "left":
             if self.y_change == 0:
-                self.image = self.game.character_spritesheet.get_sprite(1, 93, 73, 100)
+                self.image = self.game.Isa.get_sprite(1, 93, 73, 100)
       
         if self.facing == "right":
             if self.y_change == 0:
-                self.image = self.game.character_spritesheet.get_sprite(73, 93, 100, 100)
-
+                self.image = self.game.Isa.get_sprite(73, 93, 100, 100)
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
@@ -126,4 +126,36 @@ class Ground(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
+
+class Button:
+    def __init__(self, x, y, width, height, fg, bg, content, fontsize):
+        self.font = pygame.font.Font('Font/MONO.ttf', fontsize)
+        self.content = content
+
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+        self.fg = fg
+        self.bg = bg
+
+        self.image = pygame.Surface((self.width, self.height))
+        self.image.fill(self.bg)
+        self.rect = self.image.get_rect()
+
+        self.rect.x = self.x
+        self.rect.y = self.y
+
+        self.text = self.font.render(self.content, True, self.fg)
+        self.text_rect = self.text.get_rect(center=(self.width/2, self.height/2))
+        self.image.blit(self.text, self.text_rect)
+
+    def is_pressed(self, pos, pressed):
+        if self.rect.collidepoint(pos):
+            if pressed[0]:
+                return True
+            return False
+        return False
+
         
