@@ -1,7 +1,7 @@
 # Mini RPG
 
 ## Repository
-<https://github.com/eringutschke/final-project-proposal.git>
+https://github.com/eringutschke/final-project-proposal
 
 ## Description
 A pixelated RPG that has you playing as an adventurer–personal character based off of Dungeons & Dragons. You explore a cave, avoid monsters, and find the treasure. A challenge to push myself to learn more python/pygame.
