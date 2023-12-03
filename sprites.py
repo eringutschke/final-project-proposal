@@ -191,8 +191,6 @@ class Enemy(pygame.sprite.Sprite):
             if self.x_change == 0:
                 self.image = self.game.enemy.get_sprite(0, 0, 33, 33)
 
-
-
 class Treasure(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
 
@@ -222,8 +220,6 @@ class Treasure(pygame.sprite.Sprite):
 
         self.x_change = 0
         self.y_change = 0
-
-
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, game, x, y):

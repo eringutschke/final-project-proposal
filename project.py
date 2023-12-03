@@ -4,13 +4,13 @@ from config import *
 import sys
 import random
 
-#class Sound:
-#    pygame.mixer.init()
-#
-#    channel1 = pygame.mixer.Channel(0)
-#    channel2 = pygame.mixer.Channel(1)
-#    background_sound = pygame.mixer.Sound('audio/evretro__8-bit-brisk-music-loop.wav')
-#    channel1.play(background_sound, -1)
+class Sound:
+    pygame.mixer.init()
+
+    channel1 = pygame.mixer.Channel(0)
+    channel2 = pygame.mixer.Channel(1)
+    background_sound = pygame.mixer.Sound('audio/evretro__8-bit-brisk-music-loop.wav')
+    channel1.play(background_sound, -1)
 
 class Game:
     def __init__(self):
@@ -30,7 +30,7 @@ class Game:
         self.go = pygame.image.load('./img/go.png')
         self.winner = pygame.image.load('./img/win.png')
         self.intro = pygame.image.load('./img/intro.png')
-        self.pause = pygame.image.load('./img/map.png')
+        self.pause_screen = pygame.image.load('./img/map.png')
 
     def createTilemap(self):
         self.blocksgroup = pygame.sprite.Group()
@@ -61,15 +61,11 @@ class Game:
     def events(self):
         # game loop events
         for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_m:
+                pygame.display = self.pause_screen
             if event.type == pygame.QUIT:
                 self.playing = False
                 self.running = False
-                keys = pygame.key.get_pressed()
-                if keys[pygame.K_m]:
-                    if pause:
-                        pause = False
-                    else:
-                        pause = True
 
     def update(self):
         # game loop updates
@@ -92,7 +88,7 @@ class Game:
     def game_over(self):
         text = self.font.render('Game Over!', True, WHITE)
         text_rect = text.get_rect(center=(WIN_WIDTH/2, WIN_HEIGHT/2))
-        restart_button = Button(10, WIN_HEIGHT - 60, 120, 50, WHITE, BLACK, 'Restart', 32)
+        restart_button = Button(10, WIN_HEIGHT - 60, 120, 50, WHITE, BLACK, 'Restart', 28)
         for sprite in self.all_sprites:
             sprite.kill()
         while self.running:
@@ -132,7 +128,6 @@ class Game:
 
         play_button = Button(10, 80, 100, 100, WHITE, BLACK, 'Play', 32)
 
-
         while intro:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -151,7 +146,6 @@ class Game:
   
             self.clock.tick(FPS)
             pygame.display.update()
-    
 
 g = Game()
 g.intro_screen()

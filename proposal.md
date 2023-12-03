@@ -4,7 +4,7 @@
 <https://github.com/eringutschke/final-project-proposal.git>
 
 ## Description
-A pixelated RPG that has you playing as a trio of adventurers–personal characters based off of Dungeons & Dragons. You explore a cave, avoid monsters, and find the treasure. A challenge to push myself to learn more python/pygame.
+A pixelated RPG that has you playing as an adventurer–personal character based off of Dungeons & Dragons. You explore a cave, avoid monsters, and find the treasure. A challenge to push myself to learn more python/pygame.
 
 ## Features
 - Switch between three characters
@@ -28,14 +28,12 @@ Ideal Outcome:
 - Patrolling enemies that will kill you if you touch them.
 - Run into treasure to end game.
 - Game Over
-- Ending
 
 Minimal Viable Outcome:
-- Two playable characters you can switch between.
+- One playable character that changes where it's facing depending on where it moves
 - Explorable cave with at least one level.
 - Run into treasure to end game.
 - Game Over
-- Ending
 
 ## Milestones
 
@@ -44,7 +42,7 @@ Minimal Viable Outcome:
   2. Create characters/map 
 
 - Week 2
-  1. Intro/Game Over/Ending
+  1. Intro/Game Over
   2. Movable camera/walking
 
 - Week N (Final)
